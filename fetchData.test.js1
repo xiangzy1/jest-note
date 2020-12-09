@@ -1,0 +1,48 @@
+import { fetchData, fetchData2, fetchData3 } from './fetchData.js1'
+
+// 回调类型异步函数测试
+test('fetchData 返回结果为 { success: true }', (done) => {
+  fetchData((data) => {
+    expect(data).toEqual({
+      success: true
+    })
+    done() // 调用done之后测试才结束
+  })
+})
+
+// 异步函数测试
+test('fetchData 返回结果为 { success: true }', () => {
+  return fetchData2().then(res => {
+    expect(res.data).toEqual({
+      success: true
+    })
+  })
+})
+
+// 异步函数测试
+test('fetchData 返回结果为 404', () => {
+  // 下面至少要执行1个expect语法，防止走到then
+  expect.assertions(1)
+  return fetchData3().catch(e => {
+    expect(e.toString().indexOf('404') > -1).toBe(true)
+  })
+})
+
+// 异步函数测试
+test('fetchData 返回结果为 { success: true }', () => {
+  return expect(fetchData2()).resolves.toMatchObject({
+    data: { success: true }
+  })
+})
+// 异步函数测试
+test('fetchData 返回结果为 404', () => {
+  return expect(fetchData3()).rejects.toThrow()
+})
+
+// 异步函数测试
+test('fetchData 返回结果为 { success: true }', async () => {
+  const res = await fetchData2()
+  expect(res.data).toMatchObject({
+    success: true
+  })
+})

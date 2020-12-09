@@ -1,0 +1,21 @@
+jest.mock('./mock')
+import { fetchData } from './mock'
+import axios from 'axios'
+
+// jest.mock('axios')
+// test('fetchdata test', () => {
+//   axios.get.mockResolvedValue({
+//     data: '(function() {return "123"})()'
+//   })
+//   return fetchData().then(data => {
+//     expect(eval(data)).toEqual('123')
+//   })
+// })
+
+// 会在__mocks__文件夹下找
+
+test('fetchdata test', () => {
+  return fetchData().then(data => {
+    expect(eval(data)).toEqual('123')
+  })
+})

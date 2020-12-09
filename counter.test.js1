@@ -1,0 +1,40 @@
+import Counter from './counter.js1'
+
+let counter = null
+// 所有测试用例执行之前
+beforeAll(() => {
+  // counter = new Counter()
+})
+// 所有测试用例执行之后
+afterAll(() => {
+
+})
+// 每个测试用例执行之前
+beforeEach(() => {
+  counter = new Counter()
+})
+afterEach(() => {
+  counter = new Counter()
+})
+
+describe('测试增加相关', () => {
+  test('test addone', () => {
+    counter.addOne()
+    expect(counter.number).toBe(1)
+  })
+  test('test addTwo', () => {
+    counter.addTwo()
+    expect(counter.number).toBe(2)
+  })
+})
+describe('测试减少相关', () => {
+  test('test addone', () => {
+    counter.minusOne()
+    expect(counter.number).toBe(-1)
+  })
+
+  test('test addone', () => {
+    counter.minusTwo()
+    expect(counter.number).toBe(-2)
+  })
+})

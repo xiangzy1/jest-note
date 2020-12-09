@@ -1,0 +1,54 @@
+test('test', () => {
+  // toBe 匹配器
+  const a = { a: 1 }
+  expect(a).toBe({a: 1})
+})
+test('测试对象内容相等', () => {
+  // toBe 匹配器
+  const a = { a: 1 }
+  expect(a).toEqual({a: 1})
+})
+
+test('tobenull', () => {
+  // toBe 匹配器
+  const a = null
+  expect(a).toBeNull()
+  // toBeUndefined()
+  // toBeDefined
+  // toBeTrutry() 会隐式转换
+  // toBeFalsy()
+  // not.toBeFalsy() 去反
+})
+
+// 数字相关
+test('tobe', () => {
+  // toBe 匹配器
+  const a = 10
+  expect(a).toBeGeaterThan(11)
+  // .toBeLessThan(11)
+  // .toBeGreaterThanOrEqual()
+  // .toBeLesshanOrEqual()
+  expect(0.1 + 0.2).toBeCloseTo(0.3) // 计算浮点数
+})
+// 字符串相关
+test('tobe', () => {
+  // toBe 匹配器
+  const str = 'ddd'
+  expect(str).toMatch('dd')
+  expect(str).toMatch(/dd/)
+})
+// 数组/set相关
+test('tobe', () => {
+  // toBe 匹配器
+  const arr = ['a', 'b', 'c']
+  expect(arr).toContain('a')
+  expect(arr).toMatch(/dd/)
+})
+
+// 异常
+const throwError = () => {
+  throw new Error('this is error')
+}
+test('tobe', () => {
+  expect(throwError).toThrow('this is error')
+})

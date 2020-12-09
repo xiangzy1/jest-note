@@ -1,0 +1,25 @@
+import { generateConfig, generateTimeConfig } from "./snapshot";
+
+test("test generateconfig", () => {
+  // 测试配置文件，第一次生成快照，之后每次与快照对比
+  expect(generateConfig()).toMatchSnapshot();
+});
+test("test generateconfigtime", () => {
+  // time不必每次都相等
+  expect(generateTimeConfig()).toMatchSnapshot({
+    time: expect.any(Date),
+  });
+});
+test("test generateconfigtime", () => {
+  // 将snapshot放在行内
+  expect(generateTimeConfig()).toMatchInlineSnapshot(
+    {
+      time: expect.any(Date),
+    },
+    `
+    Object {
+      "time": Any<Date>,
+    }
+  `
+  );
+});

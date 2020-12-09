@@ -1,0 +1,21 @@
+import timer from './timer'
+
+
+// test('timer test', (done) => {
+//   timer(() => {
+//     expect(1).toBe(1)
+//     done()
+//   })
+// })
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+test('timer test', () => {
+  const fn = jest.fn()
+  timer(fn)
+  // 立马执行timer，避免等待
+  // jest.runAllTimers()
+  // 时间快进3s
+  jest.advanceTimersByTime(3000)
+  expect(fn).toHaveBeenCalledTimes(1)
+})

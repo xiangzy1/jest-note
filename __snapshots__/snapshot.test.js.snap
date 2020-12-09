@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test generateconfig 1`] = `
+Object {
+  "port": "8080",
+  "server": "http://localhost",
+}
+`;
+
+exports[`test generateconfigtime 1`] = `
+Object {
+  "time": Any<Date>,
+}
+`;
